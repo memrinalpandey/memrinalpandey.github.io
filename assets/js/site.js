@@ -43,13 +43,14 @@
     var messages = [
       [0, 'No compression. The spheroid sits in a soft collagen gel.'],
       [1, 'Light compression starts to flatten the spheroid.'],
-      [40, 'As compression increases, STAT1/IFN signaling goes down. We saw this in RNA-seq and confirmed it with qPCR and immunostaining.'],
-      [80, 'Interferon signaling is central to how tumors interact with the immune system, so this observation opened new questions about mechanics and tumor immunity.']
+      [20, 'As compression increases, STAT1/IFN signaling goes down. We saw this in RNA-seq and confirmed it with qPCR and immunostaining.'],
+      [40, 'Interferon signaling is central to how tumors interact with the immune system, so this observation opened new questions about mechanics and tumor immunity.']
     ];
 
     var render = function (v) {
-      var k = v / 100;
-      var sy = 1 - 0.42 * k, sx = 1 + 0.38 * k;
+      // v is the height reduction in percent (0 to 50); width grows so volume stays roughly constant
+      var k = v / 50;
+      var sy = 1 - v / 100, sx = 1 / Math.sqrt(sy);
       cellsG.setAttribute('transform',
         'translate(' + CX + ' ' + FLOOR + ') scale(' + sx.toFixed(3) + ' ' + sy.toFixed(3) + ') translate(' + (-CX) + ' ' + (-FLOOR) + ')');
       var top = FLOOR - 2 * R * sy;
@@ -63,7 +64,7 @@
       }
       sig.style.width = Math.round(s * 100) + '%';
       out.textContent = v + '%';
-      press.style.setProperty('--fill', v + '%');
+      press.style.setProperty('--fill', (v / 50 * 100) + '%');
       var m = messages[0][1];
       for (var q = 0; q < messages.length; q++) if (v >= messages[q][0]) m = messages[q][1];
       if (msg.textContent !== m) msg.textContent = m;
@@ -83,7 +84,7 @@
           if (touched) return;
           if (!start) start = ts;
           var p = Math.min(1, (ts - start) / dur);
-          var v = Math.round(55 * Math.sin(Math.PI * p));
+          var v = Math.round(30 * Math.sin(Math.PI * p));
           press.value = v; render(v);
           if (p < 1) requestAnimationFrame(step); else { press.value = 0; render(0); }
         };

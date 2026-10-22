@@ -5,29 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mrinal Pandey - Portfolio</title>
   <meta name="description" content="Portfolio of Mrinal Pandey, PhD: biological engineer working on 3D tumor models, microfluidics, organ-on-chip systems, and tumor-immune interactions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-grid">
-      <div>
-        <h1 class="brand">Mrinal Pandey, PhD</h1>
-        <p class="tag">Scientist - Innovator - Collaborator</p>
-      </div>
+      <a class="brand" href="#top">Mrinal Pandey</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#publications">Selected Work</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="kicker">PhD, Biological Engineering · Cornell University</p>
+          <h1>Building 3D tumor models to study how <em>physical forces</em> shape cancer.</h1>
+          <p class="lede">I combine tumor spheroids, microfluidic devices, imaging and transcriptomics to study tumor mechanics and tumor-immune interactions, and I am moving toward organ-on-chip systems for translational oncology.</p>
+          <div class="cta-row">
+            <a class="btn" href="#research">Explore my research</a>
+            <a class="btn outline" href="assets/docs/Mrinal_Pandey_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <img src="assets/images/hero-spheroid.jpg" alt="Confocal image of a tumor spheroid embedded in a 3D collagen matrix" width="1200" height="1142">
+          <figcaption>Confocal image of a tumor spheroid embedded in a 3D collagen matrix.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="question" aria-label="Guiding question">
+      <div class="container">
+        <p>Can human-based in vitro models recreate the tumor microenvironment well enough to complement what we learn from animal models?</p>
+      </div>
+    </section>
+
     <!-- About with headshot left -->
     <section id="about" class="section about">
       <div class="container about-grid">
@@ -35,15 +58,14 @@
           <img src="assets/images/headshot.jpg" alt="Portrait of Mrinal Pandey" width="340" height="340">
         </div>
         <div class="about-text">
-          <h2>About Me</h2>
+          <h2>About</h2>
           <p>Hi, I’m <strong>Mrinal Pandey</strong>, a biological engineer with a PhD from Cornell University. My research uses <strong>3D tumor spheroid models, microfluidic platforms, and transcriptomics</strong> to study how <strong>mechanical forces impact tumor progression and invasion</strong>, including how compression suppresses STAT1/IFN signaling in breast tumor spheroids.</p>
-          <p>Next, I want to work closer to translation using <strong>organ-on-chip and microphysiological systems (MPS)</strong> that recreate the patient's tumor microenvironment, including complex tissue and tumor-immune cell interactions. As a next step in my career I want to work towards science that's closer to precision oncology and pateint care. Alongside research, I am a reviewr for scientific jounrls and I also review oncology clinical trial and drug discovery literature for non-scientific audiences, and I hold Good Clinical Practice (GCP) and Medical Science Liaison (MSL) certifications. Based in Ontario, Canada.</p>
+          <p>I want to bring my work closer to translation using <strong>organ-on-chip and microphysiological systems (MPS)</strong> that recreate a patient’s tumor microenvironment, including complex tissue and tumor-immune cell interactions. As a next step in my career, I want to work on science that is closer to precision oncology and patient care. Alongside research, I review manuscripts for scientific journals and summarize oncology clinical trial and drug discovery literature for non-scientific audiences. I hold Good Clinical Practice (GCP) and Medical Science Liaison (MSL) certifications. Based in Ontario, Canada.</p>
           <div class="cta-row">
             <a class="btn" href="mailto:meetmrinalp@gmail.com">Email</a>
             <a class="btn outline" href="https://www.linkedin.com/in/mrinal-pandey/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn outline" href="https://scholar.google.com/citations?user=B7w0ifAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
             <a class="btn outline" href="https://orcid.org/0000-0001-8941-4290" target="_blank" rel="noopener">ORCID</a>
-            <a class="btn" href="assets/docs/Mrinal_Pandey_CV.pdf" target="_blank" rel="noopener">Download CV</a>
           </div>
         </div>
       </div>
@@ -69,18 +91,18 @@
             </svg>
           </div>
           <div class="sim-controls">
-            <label for="press">Compression <output id="pressOut" for="press">0%</output></label>
-            <input type="range" id="press" min="0" max="100" value="0">
+            <label for="press">Compression (height reduction) <output id="pressOut" for="press">0%</output></label>
+            <input type="range" id="press" min="0" max="50" value="0">
             <div class="meter">
               <span>STAT1/IFN signaling</span>
               <div class="bar" aria-hidden="true"><i id="sig"></i></div>
             </div>
-            <p class="tiny">An illustration of tumor-embedded collagen being compressed, not experimental data.</p>
+            <p class="tiny">An illustration of the finding, not experimental data.</p>
           </div>
         </div>
         <div class="sim-text">
           <h2>Try it: compress a tumor spheroid</h2>
-          <p>Tumors grow in tight spaces and get squeezed by the tissue around them. During my PhD I developed in vitro models that could mimic these stresses to 3D breast tumor spheroids embedded in collagen. Then I studies the tumor reponse at different time scales.</p>
+          <p>Tumors grow in tight spaces and get squeezed by the tissue around them. During my PhD I developed in vitro models that apply this kind of pressure to 3D breast tumor spheroids embedded in collagen. I then investigated the effect of these stresses on tumor mechanics and invasion</p>
           <p id="simMsg" class="sim-msg" aria-live="polite">Drag the slider to apply compression.</p>
           <ul class="sim-facts">
             <li><strong>Mechanics:</strong> how compression changes invasion and the viscoelastic behavior of spheroids.</li>
@@ -173,7 +195,7 @@
 
     <!-- Skills -->
     <section id="skills" class="section">
-      <div class="container two-col">
+      <div class="container skills-wrap">
         <div>
           <h2>Research interests</h2>
           <ul class="pill-list">
@@ -196,10 +218,6 @@
             <li>Leadership</li><li>Cross-functional collaboration</li><li>Mentoring</li><li>Scientific communication</li>
           </ul>
         </div>
-        <figure class="about-figure">
-          <img src="assets/images/research.jpg" alt="Microfluidic device and 3D spheroids" width="640" height="420">
-          <figcaption class="muted">Confocal image of a tumor spheroid embedded in 3D collagen matrix.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -247,7 +265,7 @@
     <!-- Publications (Selected) & Presentations -->
     <section id="publications" class="section">
       <div class="container">
-        <h2>Selected Work</h2>
+        <h2>Publications</h2>
         <div class="filters" role="group" aria-label="Filter publications">
           <button class="chip" aria-pressed="true" data-filter="all">All (9)</button>
           <button class="chip" aria-pressed="false" data-filter="first">First author</button>
