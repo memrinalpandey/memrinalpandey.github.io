@@ -143,3 +143,65 @@ h2{color:var(--accent);margin:0 0 1rem;font-size:1.6rem}
   .cards.two { grid-template-columns: 1fr; } /* stack on mobile */
 }
 
+
+/* ===== Interactive additions (Oct 2026) ===== */
+html{scroll-behavior:smooth;scroll-padding-top:5.5rem}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:.3rem}
+
+/* Spheroid demo */
+.research-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:2.5rem;align-items:center}
+.sim{background:#140b12;border-radius:1rem;padding:1rem 1.25rem 1.25rem;color:#f3e9ee;box-shadow:0 10px 30px rgba(60,0,20,.18)}
+.sim-stage svg{width:100%;height:auto;display:block}
+#fibers path{fill:none;stroke:rgba(255,220,235,.13);stroke-width:1.3;stroke-linecap:round}
+#plate{fill:#b9b3b7}
+.floor{fill:#6d6469}
+#cells circle{stroke:rgba(255,200,220,.35);stroke-width:.6}
+.sim-controls label{display:flex;justify-content:space-between;font-weight:700;margin-top:.5rem}
+.sim-controls output{font-variant-numeric:tabular-nums;color:#ff9cc0}
+#press{--fill:0%;-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;margin:.6rem 0 1rem;
+  background:linear-gradient(to right,var(--accent) var(--fill),#4a3943 var(--fill));cursor:pointer}
+#press::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:4px solid var(--accent);cursor:grab}
+#press::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--accent);cursor:grab}
+.meter span{font-size:.9rem;opacity:.85}
+.meter .bar{height:10px;border-radius:999px;background:#3a2c34;overflow:hidden;margin-top:.3rem}
+.meter i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff4f8b,#ff9cc0);border-radius:999px;transition:width .15s linear}
+.sim .tiny{color:#b9a8b1;margin:.8rem 0 0;font-size:.82rem}
+.sim-msg{min-height:4.9em;border-left:4px solid var(--accent);padding:.4rem 0 .4rem .9rem;background:#fff;border-radius:0 .5rem .5rem 0;font-weight:500}
+.sim-facts{padding-left:1.1rem}
+.sim-facts li{margin-bottom:.4rem}
+
+/* Earlier roles */
+.earlier{margin-top:1rem}
+.more-btn,.chip,.nav-toggle{font:inherit;cursor:pointer}
+.more-btn{margin-top:1rem;background:transparent;border:2px solid var(--accent);color:var(--accent);font-weight:700;padding:.5rem 1rem;border-radius:.6rem}
+.more-btn:hover{background:var(--accent);color:#fff}
+
+/* Publication filters */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1rem}
+.chip{border:1px solid #ddd;background:#fff;border-radius:999px;padding:.35rem .9rem;font-weight:600;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.pub-list li[hidden]{display:none}
+
+/* Lightbox */
+.zoomable{cursor:zoom-in}
+#lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,1100px)}
+#lightbox::backdrop{background:rgba(10,4,8,.82)}
+#lightbox img{max-height:84vh;width:auto;border-radius:.75rem}
+.lb-close{position:absolute;top:.6rem;right:.6rem;background:#fff;border:0;border-radius:.5rem;padding:.4rem .8rem;font:inherit;font-weight:700;cursor:pointer}
+
+/* Back to top */
+.to-top{position:fixed;right:1.1rem;bottom:1.1rem;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+  padding:.55rem .9rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .2s}
+.to-top.show{opacity:1;pointer-events:auto}
+
+/* Mobile menu */
+.nav-toggle{display:none;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);border-radius:.5rem;padding:.35rem .8rem;font-weight:700}
+.header-grid{position:relative}
+@media (max-width: 980px){
+  .research-grid{grid-template-columns:1fr}
+  .nav-toggle{display:block}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--accent);padding:.5rem 1.25rem 1rem;flex-direction:column}
+  .nav.open{display:flex}
+  .nav a{margin:0;padding:.55rem 0;border-top:1px solid rgba(255,255,255,.2)}
+}
