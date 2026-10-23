@@ -94,6 +94,20 @@
     }
   }
 
+  // ---------- Email reveal (keeps the address out of the page source) ----------
+  var rev = function (x) { return x.split('').reverse().join(''); };
+  document.querySelectorAll('.email-reveal').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var addr = rev(btn.dataset.u) + '@' + rev(btn.dataset.d);
+      var link = document.createElement('a');
+      link.className = btn.className.replace('email-reveal', '').trim();
+      link.href = 'mailto:' + addr;
+      link.textContent = addr;
+      btn.replaceWith(link);
+      link.focus();
+    });
+  });
+
   // ---------- Earlier roles toggle ----------
   var moreBtn = $('moreBtn'), earlier = $('earlier');
   if (moreBtn && earlier) {
